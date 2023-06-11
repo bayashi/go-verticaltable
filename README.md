@@ -13,13 +13,13 @@
 package main
 
 import (
-    "os"
+	"os"
 
-    "github.com/bayashi/go-verticaltable"
+	"github.com/bayashi/go-verticaltable"
 )
 
 func main() {
-    vt := verticaltable.NewTable(os.Stdout)
+	vt := verticaltable.NewTable(os.Stdout)
 
 	vt.Header("foo")
 	vt.Row("ID", "123")
@@ -31,7 +31,7 @@ func main() {
 	vt.Row("Select Type", "UNIQUE")
 	vt.Row("Table", "bar")
 
-    tb.Render()
+	tb.Render()
 	// Output:
 	// ********** 1. foo **********
 	//          ID: 123
