@@ -31,7 +31,7 @@ func main() {
 	vt.Row("Select Type", "UNIQUE")
 	vt.Row("Table", "bar")
 
-	tb.Render()
+	vt.Render()
 	// Output:
 	// ********** 1. foo **********
 	//          ID: 123
