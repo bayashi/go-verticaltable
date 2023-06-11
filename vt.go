@@ -114,5 +114,5 @@ func (v *VT) buildRow(tb *table, row *row) string {
 		key = row.key + strings.Repeat(" ", tb.maxLen-len(row.key))
 	}
 
-	return  key + v.opt.kvSeparator + row.value + "\n"
+	return key + v.opt.kvSeparator + row.value + "\n"
 }
