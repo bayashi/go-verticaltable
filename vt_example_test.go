@@ -20,10 +20,10 @@ func ExampleVT() {
 
 func ExampleVTOptions() {
 	vt := NewTable(os.Stdout, &VTOptions{
-		headerFormat:  "--- %s",
-		showCount:     false,
-		kvSeparator:   " = ",
-		keyAlignRight: false,
+		HeaderFormat:  "--- %s",
+		ShowCount:     false,
+		KvSeparator:   " = ",
+		KeyAlignRight: false,
 	})
 	buildTables(vt).Render()
 	// Output:

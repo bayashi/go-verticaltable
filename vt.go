@@ -25,11 +25,11 @@ type VT struct {
 }
 
 type VTOptions struct {
-	headerFormat  string
-	showCount     bool
-	countFormat   string
-	kvSeparator   string
-	keyAlignRight bool
+	HeaderFormat  string
+	ShowCount     bool
+	CountFormat   string
+	KvSeparator   string
+	KeyAlignRight bool
 }
 
 func NewTable(writer io.Writer, opts ...*VTOptions) *VT {
@@ -38,11 +38,11 @@ func NewTable(writer io.Writer, opts ...*VTOptions) *VT {
 		opt = opts[0]
 	} else {
 		opt = &VTOptions{
-			headerFormat:  "********** %s **********",
-			showCount:     true,
-			countFormat:   "%d. ",
-			kvSeparator:   ": ",
-			keyAlignRight: true,
+			HeaderFormat:  "********** %s **********",
+			ShowCount:     true,
+			CountFormat:   "%d. ",
+			KvSeparator:   ": ",
+			KeyAlignRight: true,
 		}
 	}
 
@@ -99,20 +99,20 @@ func (v *VT) render() string {
 
 func (v *VT) buildHeader(i int, tb *table) string {
 	count := ""
-	if v.opt.showCount {
-		count = fmt.Sprintf(v.opt.countFormat, i+1)
+	if v.opt.ShowCount {
+		count = fmt.Sprintf(v.opt.CountFormat, i+1)
 	}
 
-	return fmt.Sprintf(v.opt.headerFormat, count+tb.header) + "\n"
+	return fmt.Sprintf(v.opt.HeaderFormat, count+tb.header) + "\n"
 }
 
 func (v *VT) buildRow(tb *table, row *row) string {
 	key := ""
-	if v.opt.keyAlignRight {
+	if v.opt.KeyAlignRight {
 		key = strings.Repeat(" ", tb.maxLen-len(row.key)) + row.key
 	} else {
 		key = row.key + strings.Repeat(" ", tb.maxLen-len(row.key))
 	}
 
-	return key + v.opt.kvSeparator + row.value + "\n"
+	return key + v.opt.KvSeparator + row.value + "\n"
 }
